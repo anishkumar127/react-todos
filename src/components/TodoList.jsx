@@ -1,7 +1,7 @@
 import React from "react";
 
 const TodoList = (props) => {
-  console.log(item);
+  //   console.log(props.item);
   return (
     <li className="list-item">
       {props.item}

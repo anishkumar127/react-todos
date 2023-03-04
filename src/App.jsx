@@ -5,8 +5,9 @@ import { useState } from "react";
 import TodoList from "./components/TodoList";
 const App = () => {
   const [listTodo, setListTodo] = useState([]);
+  console.log(typeof listTodo);
   let addList = (inputText) => {
-    if (inputText !== "") setListTodo(...listTodo, inputText);
+    if (inputText !== "") setListTodo([...listTodo, inputText]);
   };
 
   const deleteItemList = (index) => {
@@ -20,7 +21,7 @@ const App = () => {
         <TodoInput addList={addList} />
 
         <h1 className="app-heading">TODO</h1>
-
+        <hr />
         {listTodo.map((item, index) => {
           return (
             <TodoList

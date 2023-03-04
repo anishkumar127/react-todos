@@ -11,10 +11,10 @@ const TodoInput = (props) => {
 
   // handle submit on click
 
-  const handleSubmit = (addList) => {
-    props.addList(inputText);
-    setInputText("");
-  };
+  // const handleSubmit = (addList) => {
+  //   props.addList(inputText);
+  //   setInputText("");
+  // };
   return (
     <div>
       <div className="input-container">
@@ -23,10 +23,10 @@ const TodoInput = (props) => {
           className="input-box-todo"
           placeholder="enter your todo..."
           // onChange={handleInput}
+          value={inputText}
           onChange={(e) => {
             setInputText(e.target.value);
           }}
-          value={inputText}
         />
         <button
           className="add-btn"
