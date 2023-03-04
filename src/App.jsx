@@ -1,38 +1,35 @@
 import React from "react";
-import TodoInput from "./components/TodoInput";
-import "./App.css";
 import { useState } from "react";
-import TodoList from "./components/TodoList";
+import InputTodo from "./components/InputTodo";
+import DisplayTodo from "./components/DisplayTodo";
 const App = () => {
-  const [listTodo, setListTodo] = useState([]);
-  console.log(typeof listTodo);
-  let addList = (inputText) => {
-    if (inputText !== "") setListTodo([...listTodo, inputText]);
-  };
+  const [todos, setTodos] = useState([]);
 
-  const deleteItemList = (index) => {
-    let newListTodo = [...listTodo];
-    newListTodo.splice(index, 1);
-    setListTodo([...newListTodo]);
+  let addTodo = (inputText) => {
+    if (inputText !== "") {
+      setTodos([...todos, inputText]);
+    }
+  };
+  const deleteItem = (index) => {
+    let newTodoItem = [...todos];
+    newTodoItem.splice(index, 1);
+    setTodos([...newTodoItem]);
   };
   return (
-    <div className="main-container">
-      <div className="center-container">
-        <TodoInput addList={addList} />
-
-        <h1 className="app-heading">TODO</h1>
-        <hr />
-        {listTodo.map((item, index) => {
-          return (
-            <TodoList
-              key={index}
-              item={item}
-              index={index}
-              deleteItem={deleteItemList}
-            />
-          );
-        })}
-      </div>
+    <div>
+      <InputTodo addTodo={addTodo} />
+      <h1>TODO LIST</h1>
+      <hr />
+      {todos.map((item, index) => {
+        return (
+          <DisplayTodo
+            key={index}
+            item={item}
+            index={index}
+            deleteItem={deleteItem}
+          />
+        );
+      })}
     </div>
   );
 };
